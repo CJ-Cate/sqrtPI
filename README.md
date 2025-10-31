@@ -1,0 +1,2 @@
+# sqrtPI
+Personal Hyprland Rice
