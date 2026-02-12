@@ -1,0 +1,24 @@
+# some docs, better just use chatgpt: https://randomgeekery.org/config/linux/dunst/dunstrc/
+[global]
+# offset = top-right # default
+offset = (40,40) # right offset, top offset
+corner_radius = 10
+font = Monospace 10 # scale up a bit
+timeout = 5 # seconds
+frame_color = "#8a3d24"
+separator_color= frame
+highlight = "#8aadf4"
+
+[urgency_low]
+background = "#24273a"
+foreground = "#cad3f5"
+
+[urgency_normal]
+background = "#24273a"
+foreground = "#cad3f5"
+
+[urgency_critical]
+timeout = 0 # never expire
+background = "#24273a"
+foreground = "#cad3f5"
+frame_color = "#f5a97f"

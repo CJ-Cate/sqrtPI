@@ -1,0 +1,24 @@
+{
+  "logo": {
+    "source": "$HOME/.config/fastfetch/ascii/arch.txt",
+    "color": {
+      "2": "blue"
+    }
+  },
+  "modules": [
+    "title",
+    "separator",
+    "os",
+    "uptime",
+    "shell",
+    "break",
+    "cpu",
+    "gpu",
+    "memory",
+    "swap",
+    "break",
+    "colors",
+    "break"
+  ]
+}
+

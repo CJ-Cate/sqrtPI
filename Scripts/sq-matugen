@@ -1,0 +1,5 @@
+[config]
+
+[templates.hyprland]
+input_path = '~/sqrtPI/Themes/$THEME_NAME/hypr/matugen-hyprland.conf'
+output_path = '~/sqrtPI/Themes/$THEME_NAME/.live/matugen-hyprland.conf'

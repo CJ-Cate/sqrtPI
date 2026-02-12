@@ -1,0 +1,29 @@
+[config]
+
+[templates.hyprland]
+input_path = '~/SqrtPI/Themes/$THEME_NAME/hypr/matugen-hyprland.conf'
+output_path = '~/SqrtPI/Themes/$THEME_NAME/.live/matugen-hyprland.conf'
+
+[templates.rofi]
+input_path = '~/SqrtPI/Themes/$THEME_NAME/matugen-rofi.rasinc'
+output_path = '~/SqrtPI/Themes/$THEME_NAME/.live/matugen-rofi.rasinc'
+
+[templates.neovim]
+input_path = '~/SqrtPI/Themes/$THEME_NAME/matugen-neovim.lua'
+output_path = '~/SqrtPI/Themes/$THEME_NAME/.live/matugen-neovim.lua'
+
+[templates.tmux]
+input_path = '~/SqrtPI/Themes/$THEME_NAME/matugen-tmux.conf'
+output_path = '~/SqrtPI/Themes/$THEME_NAME/.live/matugen-tmux.conf'
+
+[templates.waybar]
+input_path = '~/SqrtPI/Themes/$THEME_NAME/waybar/matugen-style.css'
+output_path = '~/SqrtPI/Themes/$THEME_NAME/.live/waybar/matugen-style.css'
+
+[templates.kitty]
+input_path = '~/SqrtPI/Themes/$THEME_NAME/matugen-kitty.conf'
+output_path = '~/SqrtPI/Themes/$THEME_NAME/.live/matugen-kitty.conf'
+
+[templates.dunst]
+input_path = '~/SqrtPI/Themes/$THEME_NAME/matugen-dunstrc'
+output_path = '~/SqrtPI/Themes/$THEME_NAME/.live/matugen-dunstrc'

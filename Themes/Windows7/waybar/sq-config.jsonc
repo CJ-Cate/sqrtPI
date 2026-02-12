@@ -1,0 +1,88 @@
+{
+    "reload_style_on_change": true,
+    "height": 42, // Default 42
+    "spacing": 4, // Default 4
+    "position": "bottom",
+
+    "modules-left": [
+        "image#taskbarbutton",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+    ],
+    "modules-right": [
+        "network#wlo1",
+        "network#tun0",
+        "battery",
+        "pulseaudio",
+        "clock#time"
+    ],
+    
+    "image#taskbarbutton": {
+        "path":"/home/cj/sqrtPI/Themes/Windows7/media/taskbarbutton2.png",
+        "on-click":"~/sqrtPI/Scripts/rofilaunch.sh",
+        "interval":0,
+        "size":48
+    },
+
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock#time": {
+        "format": "{:%H:%M %p\n%m/%d/%Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+    "hyprland/workspaces":{
+        "separate-outputs":true,
+        "format": "{id}",
+        "on-click": "activate",
+         "persistent-workspaces": {
+              "DP-1": [1, 2, 3, 4, 5, 6],
+              "HDMI-A-1": [1, 2, 3, 4, 5, 6]
+          }
+    },
+    "pulseaudio":{
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "default": ["", ""]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol",
+        "ignored-sinks": ["Easy Effects Sink"]
+    },
+    "network#wlo1": {
+        "interface": "wlo1",
+        "format": "{ifname}",
+        //"format-wifi": "{essid} ",
+        "format-wifi": "Wifi ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+        "format-disconnected": "No wlo1",
+        "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+        "tooltip-format-wifi": "Signal strength: ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Meow :3"
+    },
+    "network#tun0": {
+        "type": "network",
+        "interface": "tun0",
+        "format": "tun0: {ipaddr}/{cidr}",
+        "format-disconnected": "Disconnected from tun0",
+        "on-click": "~/sqrtPI/Scripts/getTun0.sh 'Copied!'"
+    }
+}

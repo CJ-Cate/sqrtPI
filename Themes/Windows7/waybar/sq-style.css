@@ -1,0 +1,122 @@
+/* sqrtPI Izutsumi Theme */
+@define-color color-1 #26aef9; /* Red */
+@define-color color-2 #dc997e; /* Orange */
+@define-color color-4 #444140; /* Gray */
+@define-color color-6 #a86e58; /* Brown */
+@define-color color-7 #8f00ff; /* Purple */
+
+@define-color white #f7ebe8;
+@define-color black #1e1e24;
+
+@define-color taskbar-middle #819FBF;
+@define-color taskbar-outer #586D83;
+
+* {
+    border: none;
+    min-height: 0;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 13px;
+    border-radius: 5px;
+}
+
+.modules-right,
+.modules-left { 
+    padding: 0 6px; 
+    /*border-radius: 4px;*/
+}
+
+/* The big bar that everything sits on */
+window#waybar {
+    background-color: @black; /* */
+    background: linear-gradient(to right, @taskbar-outer, @taskbar-middle, @taskbar-outer);
+
+    /* Make a thin line on top of the bar */
+    border-radius: 0px;
+    /* Set a border color */
+    border-top: 1px solid #9fd8e1;
+}
+
+/* Hyprland buttons and whatnot*/
+#workspaces {
+    background-color: transparent;
+}
+#workspaces button {
+    all: initial; /* Remove GTK theme values (waybar #1351) */
+    min-width: 0; /* Fix weird spacing in materia (waybar #450) */
+    box-shadow: inset 0 -3px transparent; /* Use box-shadow instead of border so the text isn't offset */
+    padding: 6px 18px; /* Dimmensions of button */
+    margin: 6px 4px; /* Padding around button */
+    border-radius: 4px; 
+    background-color: @color-2;
+    color: @color-4;
+}
+#workspaces button.empty.active,
+#workspaces button.active {
+    color: @black; /* text color */
+    font-weight: bold;
+    background-color: @color-1;
+}
+#workspaces button:hover {
+    box-shadow: inset 0 0 0 3px @white;
+    transition: box-shadow 0.2s;
+}
+#workspaces button.empty {
+    opacity: 0.7;
+    color: @white;
+    background-color: @color-4;
+}
+
+/* Urgent Flashing */
+@keyframes colorCycle {
+    0% { background-color: @color-7; } /* First color */
+   50% { background-color: #6f2da8; } /* Second color (replace with your desired color) */
+  100% { background-color: @color-7; } /* Back to first color */
+}
+#workspaces button.urgent { 
+    animation: colorCycle 2s infinite; 
+    background-color: @color-2; 
+    color: @white;
+}
+
+/* Modules Defaults */
+#network,
+#clock,
+#battery,
+#memory, /* I don't use these ones */
+#custom-power,
+#backlight,
+#wireplumber,
+#tray {
+  margin: 6px 3px;
+  padding: 0px 12px;
+  color: @white;
+}
+
+/* Untested Battery Stuff, leave for default */
+#custom-power {
+  margin-right: 6px;
+}
+#custom-logo {
+  padding-right: 7px;
+  padding-left: 7px;
+  margin-left: 5px;
+  font-size: 15px;
+  border-radius: 8px 0px 0px 8px;
+  color: #969ea0;
+}
+#battery.warning,
+#battery.critical,
+#battery.urgent {
+  background-color: #ba4642;
+  color: #c4cacb;
+}
+#battery.charging {
+  background-color: #C09077;
+  color: #152b31;
+}
+#backlight {
+  background-color: #DAA48F;
+}
+#custom-power {
+  background-color: #ADA19B;
+}
