@@ -2,6 +2,7 @@
 
 # sqrtPI theme switcher script
 # Usage: ./theme-switcher.sh <theme-name>
+# or the rofi wrapper
 
 if [ -z "$1" ]; then
     echo "Usage: $0 <theme-name>"
