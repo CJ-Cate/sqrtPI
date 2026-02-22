@@ -46,9 +46,6 @@ envsubst < "$HOME/sqrtPI/Scripts/sq-matugen" > "$CONF/matugen/config.toml"
 update_symlink "$THEME/.live/matugen-hyprland.conf" "$CONF/hypr/matugen-hyprland.conf"
 #
 #
-#
-#
-#
 # Finally, run matugen
 mutagen image "$THEME/media/background"* # wildcard image type, good luck!
 
@@ -62,7 +59,7 @@ update_symlink "$THEME/hypr/sq-hyprlock.conf" "$CONF/hypr/sq-hyprlock.conf"
 
 # Direct bind to the config file
 # Hyprpaper: https://wiki.hypr.land/Hypr-Ecosystem/hyprpaper/
-if update_symlink "$THEME/hypr/hyprpaper.conf" "$CONF/hypr/hyprpaper.conf"; then
+if update_symlink "$THEME/hypr/sq-hyprpaper.conf" "$CONF/hypr/sq-hyprpaper.conf"; then
     killall hyprpaper 2>/dev/null && hyprpaper &
 fi
 

@@ -14,7 +14,8 @@ hypr_width=$(hyprctl -j getoption general:border_size | jq -r '.int') # border w
 # Build rofi arguments
 rofi_args=(
     -show-icons
-    -theme style_1
+    -icon-theme "Papirus"
+#    -theme style_1
     -theme-str "window {border-radius: ${hypr_border}px;} element {border-radius: ${hypr_border}px;}"
     -theme-str "element selected.normal {border-color: ${hypr_color};}"
     -theme-str "window {border: ${hypr_width}; border-color: ${hypr_color}; border-radius: ${hypr_border}px;}"

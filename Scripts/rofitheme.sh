@@ -28,7 +28,8 @@ done
 # Launch rofi
 selected=$(echo -e "$menu" | rofi -dmenu \
     -show-icons \
-    -theme style_1 \
+    -icon-theme "Papirus" \
+#    -theme style_1 \
     -theme-str "window {border-radius: ${hypr_border}px;} element {border-radius: ${hypr_border}px;}" \
     -theme-str "window {border: ${hypr_width};}" \
     -p "Select Theme" \
