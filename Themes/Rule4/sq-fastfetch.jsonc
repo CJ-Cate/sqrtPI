@@ -1,0 +1,28 @@
+{
+  "logo": {
+    "source": "$HOME/.config/fastfetch/ascii/fox.txt",
+    "color": {
+     "1": "red"
+    }
+  },
+  "display": {
+    "color": {
+      "keys": "yellow"
+    }
+  },
+  "modules": [
+    "title",
+    "separator",
+    "os",
+    "uptime",
+    "shell",
+    "break",
+    "cpu",
+    "gpu",
+    "memory",
+    "swap",
+    "break",
+    "colors",
+    "break"
+  ]
+}

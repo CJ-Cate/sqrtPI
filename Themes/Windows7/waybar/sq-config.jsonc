@@ -11,7 +11,7 @@
     "modules-center": [
     ],
     "modules-right": [
-        "network#wlo1",
+        "network#wlan0",
         "network#tun0",
         "battery",
         "pulseaudio",
@@ -66,13 +66,12 @@
         "on-click": "pavucontrol",
         "ignored-sinks": ["Easy Effects Sink"]
     },
-    "network#wlo1": {
-        "interface": "wlo1",
+    "network#wlan0": {
+        "interface": "wlan0",
         "format": "{ifname}",
         //"format-wifi": "{essid} ",
         "format-wifi": "Wifi ",
-        "format-ethernet": "{ipaddr}/{cidr} 󰊗",
-        "format-disconnected": "No wlo1",
+        "format-disconnected": "No wlan0",
         "tooltip-format": "{ifname} via {gwaddr} 󰊗",
         "tooltip-format-wifi": "Signal strength: ({signalStrength}%) ",
         "tooltip-format-ethernet": "{ifname} ",

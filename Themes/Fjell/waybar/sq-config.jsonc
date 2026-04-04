@@ -23,15 +23,15 @@
         "format-icons": ["", "", "", "", ""]
     },
     "clock#time": {
-        "format": "{:%b %d, %a @ %H:%M}"
+        "format-alt": "{:%b %d, %a @ %H:%M}"
     },
     "hyprland/workspaces":{
         "separate-outputs":true,
         "format": "{id}",
         "on-click": "activate",
         "persistent-workspaces": {
-            "DP-1": [1, 2, 3],
-            "HDMI-A-1": [4, 5, 6]
+            "DP-1": [1, 2, 5],
+            "HDMI-A-1": [3, 4, 6]
         }
     },
     "pulseaudio":{
@@ -46,14 +46,14 @@
         "ignored-sinks": ["Easy Effects Sink"]
     },
     "network#wlo1": {
-        "interface": "wlan0",
+        "interface": "wlo1",
         "format": "{ifname}",
         //"format-wifi": "{essid} ",
         "format-wifi": "Wifi ",
         "format-ethernet": "{ipaddr}/{cidr} 󰊗",
         "format-disconnected": "No wlo1",
         "tooltip-format": "{ifname} via {gwaddr} 󰊗",
-        "tooltip-format-wifi": "Signal strength: ({signalStrength}%) \nSSID: {essid}",
+        "tooltip-format-wifi": "Signal strength: ({signalStrength}%) ",
         "tooltip-format-ethernet": "{ifname} ",
         "tooltip-format-disconnected": "Meow :3"
     },
