@@ -46,7 +46,7 @@
         "ignored-sinks": ["Easy Effects Sink"]
     },
     "network#wlo1": {
-        "interface": "wlo1",
+        "interface": "wlan0",
         "format": "{ifname}",
         "format-wifi": "Wifi ",
         "format-ethernet": "{ipaddr}/{cidr} 󰊗",
