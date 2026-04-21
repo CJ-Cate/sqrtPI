@@ -48,12 +48,11 @@
     "network#wlo1": {
         "interface": "wlo1",
         "format": "{ifname}",
-        //"format-wifi": "{essid} ",
         "format-wifi": "Wifi ",
         "format-ethernet": "{ipaddr}/{cidr} 󰊗",
         "format-disconnected": "No wlo1",
         "tooltip-format": "{ifname} via {gwaddr} 󰊗",
-        "tooltip-format-wifi": "Signal strength: ({signalStrength}%) ",
+        "tooltip-format-wifi": "Signal strength: ({signalStrength}%) \nSSID: {essid}",
         "tooltip-format-ethernet": "{ifname} ",
         "tooltip-format-disconnected": "Meow :3"
     },
