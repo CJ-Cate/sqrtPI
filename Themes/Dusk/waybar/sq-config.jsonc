@@ -2,13 +2,18 @@
     "reload_style_on_change": true,
     "margin-left": 0, // Bring the bar in from the edge of the screen
     "margin-right": 0, // ^
-    "height": 42, // Default 42
+    "height": 45, // Default 42
     "spacing": 4, // Default 4
     
     "modules-left": [
+        "custom/spacer",
+        "custom/sep",
         "network#wlo1",
+        "custom/sep",
         "network#tun0",
-
+        "custom/sep",
+        "custom/spacer",
+        "custom/sep",
         "hyprland/workspaces"
     ],
     "modules-center": [
@@ -16,10 +21,20 @@
     ],
     "modules-right": [
         "battery",
+        "custom/sep",
         "pulseaudio",
-        "clock#time"
+        "custom/sep",
+        "clock#time",
+        "custom/sep",
+        "custom/spacer"
     ],
-    
+
+    "custom/sep": { "format": "", "tooltip": false},
+
+    "custom/spacer": {
+        "format": " "
+    },
+
     "battery": {
         "format": "{capacity}% {icon}",
         "format-icons": ["", "", "", "", ""]

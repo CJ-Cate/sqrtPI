@@ -1,11 +1,10 @@
-# some docs, better just use LLM: https://randomgeekery.org/config/linux/dunst/dunstrc/
+# some docs, better just use chatgpt: https://randomgeekery.org/config/linux/dunst/dunstrc/
 [global]
 # offset = top-right # default
-monitor = 2
 offset = (40,40) # right offset, top offset
 corner_radius = 10
 font = Monospace 10 # scale up a bit
-timeout = 15 # seconds
+timeout = 5 # seconds
 frame_color = "#8a3d24"
 separator_color= frame
 highlight = "#8aadf4"

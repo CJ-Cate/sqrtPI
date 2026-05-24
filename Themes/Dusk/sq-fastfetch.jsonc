@@ -1,0 +1,28 @@
+{
+  "logo": {
+    "source": "$HOME/.config/fastfetch/ascii/arch.txt",
+    "color": {
+      "1": "cyan"
+    }
+  },
+  "modules": [
+    "title",
+    "separator",
+    {
+      "type": "custom",
+      "format": "Arch Linux (btw)",
+      "key": "OS",
+      "color": "cyan"
+    },
+    "uptime",
+    "shell",
+    "break",
+    "cpu",
+    "gpu",
+    "memory",
+    "swap",
+    "break",
+    "colors",
+    "break"
+  ]
+}

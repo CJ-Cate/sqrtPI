@@ -1,4 +1,4 @@
-@import "./.live/mutagen-rofi.rasinc"
+@import "./.live/matugen-rofi.rasinc"
 
 * {
     main-bg:            #99023a25; 
