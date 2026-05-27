@@ -105,16 +105,9 @@ tooltip label {
   margin-bottom: 9px;
 }
 
+
 #custom-power {
   margin-right: 6px;
-}
-#custom-logo {
-  padding-right: 7px;
-  padding-left: 7px;
-  margin-left: 5px;
-  font-size: 15px;
-  border-radius: 8px 0px 0px 8px;
-  color: #969ea0;
 }
 #battery.warning,
 #battery.critical,
@@ -131,13 +124,4 @@ tooltip label {
 }
 #custom-power {
   background-color: #ADA19B;
-}
-
-#custom-sep {
-    background-color: transparent;
-    color: @color-2;
-    font-size: 28px;
-    padding: 0;
-    margin: 0;
-    border-radius: 0;
 }

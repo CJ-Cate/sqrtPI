@@ -1,0 +1,80 @@
+/* sqrtPI Hyprland Theme */
+@define-color color-1 #1976d2; /* Blue */
+@define-color color-2 #bababa; /* Neutral white */
+@define-color color-3 #f7ebe8; /* Red White */
+@define-color color-4 #444140; /* Gray */
+@define-color color-5 #161616; /* Black */
+@define-color color-6 #ffc107; /* Dandelion */
+@define-color color-7 #ffeb3b;/* Gold */
+
+* {
+    border: none; /* border color: border: 1px solid @color-1; */
+    min-height: 0;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 13px;
+    border-radius: 99px;
+}
+
+.modules-right,
+.modules-left { 
+    padding: 0 6px; 
+    /*border-radius: 4px;*/
+}
+
+/* The big bar that everything sits on */
+window#waybar {
+    background-color: transparent;
+}
+
+/* Hyprland buttons and whatnot*/
+#workspaces button {
+  margin: 6px 3px;
+  padding: 6px 12px;
+  background-color: @color-2;
+  color: @color-2;
+  border-radius: 90px;
+}
+
+#workspaces button.visible,
+#workspaces button.active {
+    min-width: 50px;
+    transition: min-width 0.2s ease, background 0.2s ease;
+}
+
+#workspaces button.urgent { 
+    background-color: @FF0000; 
+    color: #FF0000;
+}
+/* Modules Defaults */
+
+#network,
+#clock,
+#pulseaudio,
+#battery,
+#memory, /* I don't use these ones */
+#custom-power,
+#backlight,
+#wireplumber,
+tooltip,
+#tray {
+  margin: 6px 3px;
+  padding: 6px 12px;
+  background-color: @color-2;
+  color: @color-5;
+  border-radius: 10px;
+}
+
+
+#custom-power {
+  margin-right: 6px;
+}
+#battery.warning,
+#battery.critical,
+#battery.urgent {
+  background-color: #ba4642;
+  color: #c4cacb;
+}
+#battery.charging {
+  background-color: #C09077;
+  color: #152b31;
+}

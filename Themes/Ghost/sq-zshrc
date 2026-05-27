@@ -1,0 +1,9 @@
+if [[ $EUID -eq 0 ]]; then
+    PROMPT_CHAR="#"
+fi
+
+PS1=" %B%n %~ ${PROMPT_CHAR:-λ}%b "
+RPS1="%?|%T" # show the exit code on the far right
+
+alias ls='exa -al --color=never --group-directories-first --icons'     # preferred listing
+alias lt='exa -aT --color=never --group-directories-first --icons'     # tree listing

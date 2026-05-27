@@ -1,37 +1,29 @@
 {
     "reload_style_on_change": true,
-    "margin-left": 0, // Bring the bar in from the edge of the screen
-    "margin-right": 0, // ^
+    "margin-left": 40, // Bring the bar in from the edge of the screen
+    "margin-right": 40, // ^
     "height": 45, // Default 42
     "spacing": 4, // Default 4
+    "position": "bottom",
     
     "modules-left": [
-        "custom/spacer",
-        "network#wlo1",
-        "network#tun0",
-        "custom/spacer",
-        "hyprland/workspaces"
+        "network#tun0"
     ],
     "modules-center": [
-        
+        "hyprland/workspaces"
     ],
     "modules-right": [
         "battery",
         "pulseaudio",
-        "clock#time",
-        "custom/spacer"
+        "clock#time"
     ],
-
-    "custom/spacer": {
-        "format": " "
-    },
-
+    
     "battery": {
         "format": "{capacity}% {icon}",
         "format-icons": ["", "", "", "", ""]
     },
     "clock#time": {
-        "format": "{:%b %d, %a @ %H:%M}"
+        "format": "{:%H:%M}"
     },
     "hyprland/workspaces":{
         "separate-outputs":true,
@@ -43,8 +35,8 @@
         }
     },
     "pulseaudio":{
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
+        "format": "{volume}%",
+        "format-bluetooth": "{volume}",
         "format-muted": "",
         "format-icons": {
             "default": ["", ""]
@@ -68,7 +60,7 @@
         "type": "network",
         "interface": "tun0",
         "format": "tun0: {ipaddr}/{cidr}",
-        "format-disconnected": "Disconnected from tun0",
+        "format-disconnected": "tun0: 0.0.0.0/0",
         "on-click": "~/sqrtPI/Scripts/getTun0.sh 'Copied!'"
     }
 }

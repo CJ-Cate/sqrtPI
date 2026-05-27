@@ -23,4 +23,5 @@ hypr_color="#$(hyprctl -j getoption general:col.active_border | jq -r '.custom' 
 #wlStyle="$(envsubst <"${wlTmplt}")"
 
 # Launch wlogout (4 buttons in a row)
-wlogout -b 3 -c 10 -r 0 -m 350 --layout "${wLayout}" --css ${wlTmplt} --protocol layer-shell 
+#wlogout -b 1 -c 20 -r 10 -m 450 --layout "${wLayout}" --css ${wlTmplt} --protocol layer-shell 
+wlogout -b 1 -c 20 -r 10 -m 450 --protocol layer-shell 

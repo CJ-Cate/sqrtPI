@@ -103,6 +103,7 @@ alias hostinger="ssh root@31.97.214.217"
 alias droplet1="ssh root@138.197.234.97"
 export droplet1="root@138.197.234.97"
 alias mysql="/usr/bin/mariadb"
+alias plex="ssh -L 8080:127.0.0.1:8080 cj@10.0.0.73"
 
 source ~/.sq-zshrc
 
