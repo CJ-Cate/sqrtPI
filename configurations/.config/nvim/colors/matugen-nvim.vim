@@ -1,0 +1,1 @@
+/home/cj/sqrtPI/Themes/Hyprland/.live/matugen-nvim.vim
