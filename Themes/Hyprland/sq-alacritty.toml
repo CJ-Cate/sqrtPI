@@ -1,0 +1,13 @@
+[terminal.shell]
+program = "/usr/bin/zsh"
+
+[keyboard]
+bindings = [
+  { key = "PageUp", action = "ScrollPageUp" },
+  { key = "PageDown", action = "ScrollPageDown" },
+]
+
+[terminal]
+
+[general]
+import = ["./sq-alacritty.toml"]

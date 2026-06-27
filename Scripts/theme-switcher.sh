@@ -61,15 +61,14 @@ update_symlink "$THEME/hypr/sq-hyprlock.conf" "$CONF/hypr/sq-hyprlock.conf"
 # Hyprpaper: https://wiki.hypr.land/Hypr-Ecosystem/hyprpaper/
 if update_symlink "$THEME/hypr/sq-hyprpaper.conf" "$CONF/hypr/sq-hyprpaper.conf"; then
     killall hyprpaper 2>/dev/null && hyprpaper &
+    #hyprctl hyprpaper reload , "$Theme/media/background*"
 fi
 
 # Fastfetch: https://github.com/fastfetch-cli/fastfetch/wiki/Configuration
 update_symlink "$THEME/sq-fastfetch.jsonc" "$CONF/fastfetch/config.jsonc"
 
-# Kitty
-if update_symlink "$THEME/sq-kitty.conf" "$CONF/kitty/sq-kitty.conf"; then
-    killall -SIGUSR1 kitty 2>/dev/null
-fi
+# alacritty
+update_symlink "$THEME/sq-alacritty.conf" "$CONF/kitty/sq-alacritty.conf"
 
 # Tmux
 if update_symlink "$THEME/sq-tmux.conf" "$HOME/.sq-tmux.conf"; then

@@ -42,7 +42,7 @@ window#waybar {
 }
 
 #workspaces button.urgent { 
-    background-color: @FF0000; 
+    background-color: #FF0000; 
     color: #FF0000;
 }
 /* Modules Defaults */
@@ -71,7 +71,7 @@ tooltip,
 #battery.warning,
 #battery.critical,
 #battery.urgent {
-  background-color: #ba4642;
+  background-color: #c4cacb;
   color: #c4cacb;
 }
 #battery.charging {

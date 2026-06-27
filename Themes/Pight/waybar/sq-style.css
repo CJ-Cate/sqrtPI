@@ -1,0 +1,105 @@
+* {
+    font-family: "Iosevka", monospace;
+    font-weight: 800;
+    font-size: 13px;
+    color: #C4A7E7;
+}
+
+window#waybar {
+    background: #141221;
+    border-radius: 0;
+    margin: 0px;
+    padding: 0px 0px;
+}
+
+window#waybar.top .modules-left {
+    margin-left: 80px;
+}
+
+window#waybar.top .modules-right {
+    margin-right: 40px;
+}
+
+/* WORKSPACES */
+
+#workspaces button {
+    padding: 0px 1px;
+    margin: 3px 2px;
+    border-radius: 0;
+    background: transparent;
+    color: #5b4950;
+}
+
+/* active workspace */
+#workspaces button.active {
+    border-bottom: 2px solid #C4A7E7;
+
+}
+
+/* hover */
+#workspaces button:hover {
+    background: #1e1e1e;
+}
+
+/* LEFT BAR (vertical workspaces strip) */
+
+window#waybar.left #workspaces button {
+    margin: 2px 0px;
+    padding: 1px 0px;
+    min-width: 42px;
+}
+
+window#waybar.left #workspaces button.active {
+    border-bottom: none;
+    border-right: 2px solid #C4A7E7;
+}
+
+/* urgent */
+#workspaces button.urgent {
+    background: #5b4950;
+}
+
+#mpris {
+    font-weight: 700;
+    padding: 0 4px;
+}
+
+/* RIGHT SIDE STATES */
+
+#battery.warning {
+    background: rgba(246, 193, 119, 0.15);
+    padding: 1px 4px;
+}
+
+#battery.critical {
+    background: rgba(235, 111, 146, 0.18);
+    padding: 1px 4px;
+}
+
+#wireplumber.muted {
+    opacity: 0.6;
+}
+
+/*  TOOLTIP  */
+
+tooltip {
+    background: #111111;
+    border: 1px solid #333333;
+}
+
+tooltip label {
+    color: #e0def4;
+    font-size: 11px;
+}
+
+#custom-launcher {
+}
+
+#custom-cpucat {
+  font-family: "Waycat", monospace;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding-left: 5px;
+  padding-right: 8px;
+}

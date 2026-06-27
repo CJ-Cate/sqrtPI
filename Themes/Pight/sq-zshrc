@@ -1,0 +1,6 @@
+if [[ $EUID -eq 0 ]]; then
+    PROMPT_CHAR="#"
+fi
+
+PS1=" %F{#8f38b5}%n%f@%F{#C4A7E7}%M %F{#C4A7E7}%~ %F{#763293}${PROMPT_CHAR:-λ}%f "
+RPS1="%?|%T" # show the exit code on the far right

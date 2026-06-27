@@ -5,13 +5,15 @@ echo ""
 fastfetch
 
 if [[ -f /tmp/hack-ip ]]; then
-    export ip=$(cat /tmp/hack-ip 2>/dev/null)
-    echo "Ip has been set! Ip is: $ip"
+    export ip=$(cat /tmp/hack-ip)
+    echo "Ip has been set."
 fi
 
 ##
 ## Behaviour Configuration
 ##
+
+export PATH="$HOME/.local/bin:$PATH"
 
 export TERM="tmux-256color"
 #export BROWSER="librewolf"
@@ -81,7 +83,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias code='codium'
-#alias vim='nvim'
+alias vim='nvim'
 
 # Add colours to things by default
 alias grep='ugrep --color=auto'
@@ -92,8 +94,7 @@ alias egrep='ugrep -E --color=auto'
 alias ip='ip -color'
 
 # Personal modifications
-alias setip="wl-paste > /tmp/hack-ip; export ip=$(wl-paste); echo Ip is now: $ip"
-alias doip="export ip=$(cat /tmp/hack-ip); echo Ip is now: $ip"
+alias setip='wl-paste > /tmp/hack-ip; export ip=$(cat /tmp/hack-ip); echo Ip is now: $ip'
 alias ff="fastfetch"
 alias zz="clear; source ~/.zshrc"
 alias xx="source ~/.sq-zshrc; tmux source-file ~/.sq-tmux.conf 2>/dev/null"
@@ -104,6 +105,12 @@ alias droplet1="ssh root@138.197.234.97"
 export droplet1="root@138.197.234.97"
 alias mysql="/usr/bin/mariadb"
 alias plex="ssh -L 8080:127.0.0.1:8080 cj@10.0.0.73"
+alias ppp='echo -n "echo $(cat ~/.ssh/id_ed25519.pub) >> ~/.ssh/authorized_keys" | wl-copy'
+alias trans=' trans -b en:es "$1"'
+alias snart=' trans -b es:en "$1"'
+alias cclaude='cd ~/Documents/claude; claude'
+alias tmuxattach='echo "tmux a -t 0"'
+alias 302='clear; /home/cj/Documents/code/302dartmonkey/index.js'
 
 source ~/.sq-zshrc
 
