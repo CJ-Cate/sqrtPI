@@ -2,6 +2,7 @@
     "reload_style_on_change": true,
     "margin-left": 40, // Bring the bar in from the edge of the screen
     "margin-right": 40, // ^
+    "margin-bottom": 8, // Small gap from the screen edge
     "height": 45, // Default 42
     "spacing": 4, // Default 4
     "position": "bottom",

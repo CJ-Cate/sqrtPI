@@ -47,6 +47,7 @@ window#waybar.left #workspaces button {
     margin: 2px 0px;
     padding: 1px 0px;
     min-width: 42px;
+    border-right: 2px solid transparent;
 }
 
 window#waybar.left #workspaces button.active {

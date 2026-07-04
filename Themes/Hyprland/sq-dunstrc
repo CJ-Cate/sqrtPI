@@ -1,10 +1,12 @@
 # some docs, better just use chatgpt: https://randomgeekery.org/config/linux/dunst/dunstrc/
 [global]
-# offset = top-right # default
-offset = (40,40) # right offset, top offset
+monitor = HDMI-A-1
+follow = none
+origin = top-left
+offset = (40,40) # horiztontal offset, vertical offset
 corner_radius = 10
-font = Monospace 10 # scale up a bit
-timeout = 5 # seconds
+font = Monospace 13 # scale up a bit
+timeout = 9 # seconds
 #
 frame_color = "#48cae4"
 separator_color= frame

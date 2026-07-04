@@ -82,6 +82,9 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
+alias ........='cd ../../../../../../..'
+alias .........='cd ../../../../../../../..'
 alias code='codium'
 alias vim='nvim'
 
@@ -101,6 +104,7 @@ alias xx="source ~/.sq-zshrc; tmux source-file ~/.sq-tmux.conf 2>/dev/null"
 alias hrr="hyprctl --instance 0 reload"
 alias theme="/home/cj/sqrtPI/Scripts/theme-switcher.sh"
 alias hostinger="ssh root@31.97.214.217"
+export hostinger='root@31.97.214.217'
 alias droplet1="ssh root@138.197.234.97"
 export droplet1="root@138.197.234.97"
 alias mysql="/usr/bin/mariadb"
@@ -111,6 +115,7 @@ alias snart=' trans -b es:en "$1"'
 alias cclaude='cd ~/Documents/claude; claude'
 alias tmuxattach='echo "tmux a -t 0"'
 alias 302='clear; /home/cj/Documents/code/302dartmonkey/index.js'
+alias pdf='librewolf'
 
 source ~/.sq-zshrc
 
