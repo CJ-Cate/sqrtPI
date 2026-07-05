@@ -10,7 +10,8 @@ if [ -z "$1" ]; then
 fi
 
 THEME_NAME="$1"
-THEME="$HOME/sqrtPI/Themes/$THEME_NAME"
+THEMES_DIR="$HOME/sqrtPI/Themes"
+THEME="$THEMES_DIR/$THEME_NAME"
 CONF="$HOME/.config"
 
 if [ ! -d "$THEME" ]; then
@@ -18,103 +19,138 @@ if [ ! -d "$THEME" ]; then
     exit 1
 fi
 
-update_symlink() {
-    local supply="$1"
-    local remote="$2"
-    
-    # Try to fallback to a default if input file doesn't exist
-    if [[ ! -e "$supply" ]]; then
-        echo "$supply not found! trying default."
-        local default_supply="${supply/$THEME_NAME/Hyprland}"
-        if [[ -e "$default_supply" ]]; then
-            supply="$default_supply"
-        else
-            echo "$default_supply not found either! skipping update on $remote"
-            return 1
-        fi
+# Build the theme's inheritance chain. A theme directory may contain a
+# '.from' file naming another theme it should fall back to; this is
+# followed recursively (A -> B -> C -> ...) until a theme with no '.from'
+# is reached, at which point Hyprland is used as the ultimate default.
+# Any cycle (or a '.from' pointing at an unknown theme) also falls back
+# to Hyprland.
+declare -a THEME_CHAIN=()
+declare -A SEEN=()
+current="$THEME_NAME"
+while [[ -n "$current" && -z "${SEEN[$current]:-}" ]]; do
+    THEME_CHAIN+=("$current")
+    SEEN["$current"]=1
+
+    from_file="$THEMES_DIR/$current/.from"
+    if [[ -f "$from_file" ]]; then
+        read -r parent < "$from_file"
+    else
+        parent="Hyprland"
     fi
-    
-    mkdir -p "$(dirname "$remote")"
-    ln -sf "$supply" "$remote"
-    return 0
+
+    if [[ -z "$parent" ]]; then
+        parent="Hyprland"
+    fi
+
+    if [[ ! -d "$THEMES_DIR/$parent" ]]; then
+        echo "Warning: '$current/.from' points to unknown theme '$parent', falling back to Hyprland" >&2
+        parent="Hyprland"
+    fi
+
+    current="$parent"
+done
+
+# Guarantee Hyprland is always in the chain, even if a cycle kept it from
+# being reached naturally.
+if [[ -z "${SEEN[Hyprland]:-}" ]]; then
+    THEME_CHAIN+=("Hyprland")
+fi
+
+update_symlink() {
+    local rel_path="$1"
+    local remote="$2"
+    local theme_name supply
+
+    for theme_name in "${THEME_CHAIN[@]}"; do
+        supply="$THEMES_DIR/$theme_name/$rel_path"
+        if [[ -e "$supply" ]]; then
+            mkdir -p "$(dirname "$remote")"
+            ln -sf "$supply" "$remote"
+            return 0
+        fi
+    done
+
+    echo "$rel_path not found in theme chain (${THEME_CHAIN[*]}), skipping update on $remote"
+    return 1
 }
 
 # Update mutagen
 export THEME_NAME
 envsubst < "$HOME/sqrtPI/Scripts/sq-matugen" > "$CONF/matugen/config.toml"
 # Update all the matugen symlinks
-update_symlink "$THEME/.live/matugen-hyprland.conf" "$CONF/hypr/matugen-hyprland.conf"
+update_symlink ".live/matugen-hyprland.conf" "$CONF/hypr/matugen-hyprland.conf"
 #
 #
 # Finally, run matugen
 mutagen image "$THEME/media/background"* # wildcard image type, good luck!
 
 # Hyprland: https://wiki.hypr.land/Configuring/
-if update_symlink "$THEME/hypr/sq-hyprland.conf" "$CONF/hypr/sq-hyprland.conf"; then
+if update_symlink "hypr/sq-hyprland.conf" "$CONF/hypr/sq-hyprland.conf"; then
     hyprctl reload
 fi
 
 # Hyprlock: https://wiki.hypr.land/Hypr-Ecosystem/hyprlock/
-update_symlink "$THEME/hypr/sq-hyprlock.conf" "$CONF/hypr/sq-hyprlock.conf"
+update_symlink "hypr/sq-hyprlock.conf" "$CONF/hypr/sq-hyprlock.conf"
 
 # Direct bind to the config file
 # Hyprpaper: https://wiki.hypr.land/Hypr-Ecosystem/hyprpaper/
-if update_symlink "$THEME/hypr/sq-hyprpaper.conf" "$CONF/hypr/sq-hyprpaper.conf"; then
+if update_symlink "hypr/sq-hyprpaper.conf" "$CONF/hypr/sq-hyprpaper.conf"; then
     killall hyprpaper 2>/dev/null && hyprpaper &
     #hyprctl hyprpaper reload , "$Theme/media/background*"
 fi
 
 # Fastfetch: https://github.com/fastfetch-cli/fastfetch/wiki/Configuration
-update_symlink "$THEME/sq-fastfetch.jsonc" "$CONF/fastfetch/config.jsonc"
+update_symlink "sq-fastfetch.jsonc" "$CONF/fastfetch/config.jsonc"
 
 # alacritty
-update_symlink "$THEME/sq-alacritty.conf" "$CONF/kitty/sq-alacritty.conf"
+update_symlink "sq-alacritty.conf" "$CONF/kitty/sq-alacritty.conf"
 
 # Tmux
-if update_symlink "$THEME/sq-tmux.conf" "$HOME/.sq-tmux.conf"; then
+if update_symlink "sq-tmux.conf" "$HOME/.sq-tmux.conf"; then
     tmux source-file ~/.sq-tmux.conf 2>/dev/null
 fi
 
 # Direct bind to the config file
 # Waybar - config.jsonc
-if update_symlink "$THEME/waybar/sq-config.jsonc" "$CONF/waybar/config.jsonc"; then
+if update_symlink "waybar/sq-config.jsonc" "$CONF/waybar/config.jsonc"; then
     #killall -12 waybar 2>/dev/null # reload signal # doesnt work depending on what changes
     killall waybar; waybar & disown
 fi
 
 # Direct bind to the config file
 # Waybar - style.css
-if update_symlink "$THEME/waybar/sq-style.css" "$CONF/waybar/style.css"; then
+if update_symlink "waybar/sq-style.css" "$CONF/waybar/style.css"; then
     kill -12 waybar 2>/dev/null # reload signal
 fi
 
 # Rofi
-update_symlink "$THEME/sq-rofi.rasinc" "$CONF/rofi/sq-theme.rasinc"
+update_symlink "sq-rofi.rasinc" "$CONF/rofi/sq-theme.rasinc"
 
 # Zsh (shell)
-if update_symlink "$THEME/sq-zshrc" "$HOME/.sq-zshrc"; then
+if update_symlink "sq-zshrc" "$HOME/.sq-zshrc"; then
     zsh -c "source ~/.sq-zshrc"
 fi
 
 # Direct bind to the config file
 # Dunst (notification manager thing)
-update_symlink "$THEME/sq-dunstrc" "$CONF/dunst/dunstrc"
+update_symlink "sq-dunstrc" "$CONF/dunst/dunstrc"
 
 # NeoVim
-#update_symlink "$THEME/vim" "$HOME/.vim/sq-colors.vim"
+#update_symlink "vim" "$HOME/.vim/sq-colors.vim"
 
 # Vesktop
-#update_symlink "$THEME/better-discord" "$CONF/BetterDiscord/sq-theme"
+#update_symlink "better-discord" "$CONF/BetterDiscord/sq-theme"
 
 # LibreWolf (firefox): https://www.userchrome.org/
 # This needs to be set to your browsers profile, unique to you.
 # Browser needs to be restarted to reflect changes.
-#update_symlink "$THEME/userChrome.css" "$HOME/.librewolf/lirl03ec.default-default/chrome/userChrome.css"
+#update_symlink "userChrome.css" "$HOME/.librewolf/lirl03ec.default-default/chrome/userChrome.css"
 
 # Obsidian
-#update_symlink "$THEME/obsidian" "$HOME/Documents/cybersec/.obsidian/themes"
+#update_symlink "obsidian" "$HOME/Documents/cybersec/.obsidian/themes"
 
 # GRUB (probably wont do)
-#if update_symlink "$THEME/grub" "/etc/default/sq-grub-theme"; then
+#if update_symlink "grub" "/etc/default/sq-grub-theme"; then
 #    # GRUB requires: sudo grub-mkconfig -o /boot/grub/grub.cfg
 #fi
