@@ -60,9 +60,9 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ##
 
 # Replace ls with exa
-alias ls='exa -al --color=always --group-directories-first --icons'     # preferred listing
-alias lt='exa -aT --color=always --group-directories-first --icons'     # tree listing
-alias l.='exa -ald --color=always --group-directories-first --icons .*' # show only dotfiles
+#alias ls='exa -al --color=always --group-directories-first --icons auto'     # preferred listing
+#alias lt='exa -aT --color=always --group-directories-first --icons auto'     # tree listing
+#alias l.='exa -ald --color=always --group-directories-first --icons auto .*' # show only dotfiles
 # Replace cat with more style
 #alias cat='bat --style header --style snip --style changes --style header'
 
@@ -116,6 +116,7 @@ alias cclaude='cd ~/Documents/claude; claude'
 alias tmuxattach='echo "tmux a -t 0"'
 alias 302='clear; /home/cj/Documents/code/302dartmonkey/index.js'
 alias pdf='librewolf'
+alias mc='mv'
 
 source ~/.sq-zshrc
 
