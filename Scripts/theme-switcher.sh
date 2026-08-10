@@ -86,7 +86,8 @@ update_symlink ".live/matugen-hyprland.conf" "$CONF/hypr/matugen-hyprland.conf"
 mutagen image "$THEME/media/background"* # wildcard image type, good luck!
 
 # Hyprland: https://wiki.hypr.land/Configuring/
-if update_symlink "hypr/sq-hyprland.conf" "$CONF/hypr/sq-hyprland.conf"; then
+# Hyprland's config is Lua now; hyprlock and hyprpaper below are still hyprlang.
+if update_symlink "hypr/sq-hyprland.lua" "$CONF/hypr/sq-hyprland.lua"; then
     hyprctl reload
 fi
 
