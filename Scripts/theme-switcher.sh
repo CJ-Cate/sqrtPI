@@ -83,7 +83,7 @@ update_symlink ".live/matugen-hyprland.conf" "$CONF/hypr/matugen-hyprland.conf"
 #
 #
 # Finally, run matugen
-mutagen image "$THEME/media/background"* # wildcard image type, good luck!
+matugen image "$THEME/media/background"* # wildcard image type, good luck!
 
 # Hyprland: https://wiki.hypr.land/Configuring/
 # Hyprland's config is Lua now; hyprlock and hyprpaper below are still hyprlang.
@@ -97,7 +97,9 @@ update_symlink "hypr/sq-hyprlock.conf" "$CONF/hypr/sq-hyprlock.conf"
 # Direct bind to the config file
 # Hyprpaper: https://wiki.hypr.land/Hypr-Ecosystem/hyprpaper/
 if update_symlink "hypr/sq-hyprpaper.conf" "$CONF/hypr/sq-hyprpaper.conf"; then
-    killall hyprpaper 2>/dev/null && hyprpaper &
+    # Unconditional relaunch: killall fails when hyprpaper is already down, and
+    # an && here would then skip the restart and leave it down for good.
+    killall hyprpaper 2>/dev/null; hyprpaper & disown
     #hyprctl hyprpaper reload , "$Theme/media/background*"
 fi
 
