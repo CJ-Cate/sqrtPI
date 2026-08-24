@@ -207,6 +207,19 @@ hl.window_rule({
     suppress_event   = "fullscreen maximize",
 })
 
+-- Terraria (Steam appid 105600) is FNA/SDL3 under XWayland: on focus loss it asks
+-- X11 to drop _NET_WM_STATE_FULLSCREEN, which shrank the window out of fullscreen
+-- every time focus moved to the other monitor. Hyprland owns the fullscreen state
+-- here and ignores the client's fullscreen/maximize requests. The class is the
+-- binary name, so this covers the GOG build in ~/Games/terraria too.
+hl.window_rule({
+    name             = "terraria-own-fullscreen",
+    match            = { class = [[^(Terraria\.bin\.x86_64)$]] },
+    fullscreen_state = "2 2",
+    sync_fullscreen  = false,
+    suppress_event   = "fullscreen maximize",
+})
+
 -- █░░ ▄▀█ █▄█ █▀▀ █▀█   █▀█ █░█ █░░ █▀▀ █▀
 -- █▄▄ █▀█ ░█░ ██▄ █▀▄   █▀▄ █▄█ █▄▄ ██▄ ▄█
 

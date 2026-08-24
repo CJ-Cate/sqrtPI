@@ -57,8 +57,20 @@ hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(scrPath .. "/volumecontrol.sh -o
 ---- Boilerplate window movement, less interesting ----
 ------------------------------------------------------
 
-hl.bind(mainMod .. " + Q",        hl.dsp.exec_cmd(scrPath .. "/dontkillsteam.sh"), { description = "[Window Management] close focused window" })
--- hl.bind("ALT + F4",            hl.dsp.exec_cmd(scrPath .. "/dontkillsteam.sh"), { description = "[Window Management] close focused window" })
+-- Steam's X11 window treats close as quit, so hide it instead of killing it.
+-- Ported from dontkillsteam.sh, which only existed because the old .conf config
+-- could not branch on window class.
+local function close_window()
+    local w = hl.get_active_window()
+    if w and w.class == "Steam" then
+        hl.exec_cmd("xdotool getactivewindow windowunmap")
+    else
+        hl.dispatch(hl.dsp.window.close())
+    end
+end
+
+hl.bind(mainMod .. " + Q",        close_window,                                    { description = "[Window Management] close focused window" })
+-- hl.bind("ALT + F4",            close_window,                                    { description = "[Window Management] close focused window" })
 hl.bind("SHIFT + F11",            hl.dsp.window.fullscreen(),                      { description = "[Window Management] toggle fullscreen" })
 hl.bind(mainMod .. " + W",        hl.dsp.window.float({ action = "toggle" }),      { description = "[Window Management] toggle floating window" })
 hl.bind(mainMod .. " + S",        hl.dsp.layout("togglesplit"),                    { description = "[Window Management] toggle split" })

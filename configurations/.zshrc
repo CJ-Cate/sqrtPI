@@ -60,6 +60,7 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ##
 
 # Replace ls with exa
+alias ls='ls -al --color=auto'
 #alias ls='exa -al --color=always --group-directories-first --icons auto'     # preferred listing
 #alias lt='exa -aT --color=always --group-directories-first --icons auto'     # tree listing
 #alias l.='exa -ald --color=always --group-directories-first --icons auto .*' # show only dotfiles
