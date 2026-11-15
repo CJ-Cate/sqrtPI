@@ -107,24 +107,43 @@ fi
 update_symlink "sq-fastfetch.jsonc" "$CONF/fastfetch/config.jsonc"
 
 # alacritty
-update_symlink "sq-alacritty.conf" "$CONF/kitty/sq-alacritty.conf"
+#update_symlink "sq-alacritty.conf" "$CONF/kitty/sq-alacritty.conf"
+
+# ghostty
+update_symlink "sq-ghostty.ghostty" "$CONF/ghostty/sq-ghostty.ghostty"
+
+# kitty
+update_symlink "sq-kitty.conf" "$CONF/kitty/sq-kitty.conf"
+
 
 # Tmux
 if update_symlink "sq-tmux.conf" "$HOME/.sq-tmux.conf"; then
     tmux source-file ~/.sq-tmux.conf 2>/dev/null
 fi
 
-# Direct bind to the config file
-# Waybar - config.jsonc
-if update_symlink "waybar/sq-config.jsonc" "$CONF/waybar/config.jsonc"; then
-    #killall -12 waybar 2>/dev/null # reload signal # doesnt work depending on what changes
-    killall waybar; waybar & disown
-fi
+# Direct bind to the config files
+# Waybar - config.jsonc and style.css
+#
+# Both symlinks feed one process, so resolve them first and bounce waybar once
+# at the end. Restarting for the config and then firing the CSS reload signal
+# (SIGUSR2) a few lines later was a race: the fresh waybar had not installed
+# its signal handlers yet, and SIGUSR2's default disposition is to terminate,
+# so the just-launched bar was being killed milliseconds after starting.
+waybar_dirty=0
+update_symlink "waybar/sq-config.jsonc" "$CONF/waybar/config.jsonc" && waybar_dirty=1
+update_symlink "waybar/sq-style.css" "$CONF/waybar/style.css" && waybar_dirty=1
 
-# Direct bind to the config file
-# Waybar - style.css
-if update_symlink "waybar/sq-style.css" "$CONF/waybar/style.css"; then
-    kill -12 waybar 2>/dev/null # reload signal
+if (( waybar_dirty )); then
+    killall waybar 2>/dev/null
+    # Let it actually exit before relaunching, otherwise two bars race for the
+    # layer-shell surface. Bounded so a wedged waybar can't hang the switch.
+    for _ in $(seq 20); do
+        pgrep -x waybar >/dev/null || break
+        sleep 0.05
+    done
+    # setsid rather than `& disown`: this script runs from a rofi keybind, and a
+    # merely disowned child stays in the launcher's process group.
+    setsid waybar >/dev/null 2>&1 &
 fi
 
 # Rofi

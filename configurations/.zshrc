@@ -109,7 +109,9 @@ export hostinger='root@31.97.214.217'
 alias droplet1="ssh root@138.197.234.97"
 export droplet1="root@138.197.234.97"
 alias mysql="/usr/bin/mariadb"
-alias plex="ssh -L 8080:127.0.0.1:8080 cj@10.0.0.73"
+# reserved ip connections
+alias plex="ssh -L 8080:127.0.0.1:8080 cj@10.0.0.73" # server box
+alias rasp="ssh cj@10.0.0.170" # pihole + tailscale
 alias ppp='echo -n "echo $(cat ~/.ssh/id_ed25519.pub) >> ~/.ssh/authorized_keys" | wl-copy'
 alias trans=' trans -b en:es "$1"'
 alias snart=' trans -b es:en "$1"'
@@ -118,8 +120,16 @@ alias tmuxattach='echo "tmux a -t 0"'
 alias 302='clear; /home/cj/Documents/code/302dartmonkey/index.js'
 alias pdf='librewolf'
 alias mc='mv'
+alias ytdlp='yt-dlp'
+alias timg='timg -U --grid=8'
 
 source ~/.sq-zshrc
 
 # ZSH syntax highlighting, must be last line as per: https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 #source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# >>> Photon CLI >>>
+case ":$PATH:" in
+  *:'/home/cj/.photon/bin':*) ;;
+  *) export PATH="$PATH":'/home/cj/.photon/bin' ;;
+esac
+# <<< Photon CLI <<<

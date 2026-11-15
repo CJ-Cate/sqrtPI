@@ -68,6 +68,7 @@ local opacity_rules = {
     { name = "code-url",         class = [[^(code-url-handler)$]],                           opacity = "0.92 override 0.86 override 1" },
     { name = "code-insiders",    class = [[^(code-insiders-url-handler)$]],                  opacity = "0.92 override 0.86 override 1" },
     { name = "kitty",            class = [[^([Kk]itty)]],                                    opacity = "0.95 override 0.90 override 1" },
+    { name = "ghostty",          class = [[^(com.mitchellh.ghostty)]],                       opacity = "0.95 override 0.90 override 1" },
     -- from windowrules.conf.bak
     { name = "alacritty",        class = [[^([Aa]lacritty)]],                                opacity = "0.95 override 0.90 override 1" },
     { name = "dolphin",          class = [[^(org.kde.dolphin)$]],                            opacity = "0.92 override 0.86 override 1" },
@@ -218,6 +219,21 @@ hl.window_rule({
     fullscreen_state = "2 2",
     sync_fullscreen  = false,
     suppress_event   = "fullscreen maximize",
+})
+
+-- Steam keeps a permanently-mapped XWayland toplevel with an empty title that it
+-- draws its right-click / dropdown menus into. The steam-opacity rule above pins
+-- every steam window to tiled, so that container was claiming a whole tile: the
+-- menu drew at its own small size in one corner and the rest of the pane stayed
+-- black. Float it and drop Hyprland's minimum size so it collapses to whatever
+-- Steam actually asks for. Must stay *after* steam-opacity so the float wins.
+-- https://wiki.hypr.land/Configuring/Uncommon-tips--tricks/#steam-menus
+hl.window_rule({
+    name     = "steam-menu-float",
+    match    = { class = [[^([Ss]team)$]], title = [[^$]] },
+    float    = true,
+    min_size = "1 1",
+    no_anim  = true,
 })
 
 -- █░░ ▄▀█ █▄█ █▀▀ █▀█   █▀█ █░█ █░░ █▀▀ █▀

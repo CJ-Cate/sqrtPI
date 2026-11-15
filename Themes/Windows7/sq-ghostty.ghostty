@@ -1,0 +1,64 @@
+# vim:ft=ghostty
+
+## name:     Catppuccin Kitty Mocha
+## author:   Catppuccin Org
+## license:  MIT
+## upstream: https://github.com/catppuccin/kitty/blob/main/themes/mocha.conf
+## blurb:    Soothing pastel theme for the high-spirited!
+
+# The basic colors
+foreground = #cdd6f4
+background = #121219
+selection-foreground = #1e1e2e
+selection-background = #f5e0dc
+
+# Cursor colors
+cursor-color = #f5e0dc
+cursor-text = #1e1e2e
+
+# Split divider (kitty's window border color)
+split-divider-color = #b4befe
+
+# OS window titlebar follows the system theme
+window-theme = system
+
+# The 16 terminal colors
+
+# Black
+palette = 0=#2A2A2A
+palette = 8=#4A4A4A
+
+# Red/Orange
+palette = 1=#F5591C
+palette = 9=#FF7A3D
+
+# Green
+palette = 2=#78B937
+palette = 10=#92D054
+
+# Yellow
+palette = 3=#E9CC18
+palette = 11=#FFE040
+
+# Blue
+palette = 4=#0761BE
+palette = 12=#2A8FE8
+
+# Magenta (blend orange + blue)
+palette = 5=#9B5A9E
+palette = 13=#C07AC3
+
+# Cyan (blend green + blue)
+palette = 6=#3F8D7A
+palette = 14=#5AB89F
+
+# White
+palette = 7=#C0C0C0
+palette = 15=#FFFFFF
+
+# Kitty settings with no ghostty equivalent, dropped:
+# url_color, inactive_border_color, bell_border_color,
+# active_tab_foreground, active_tab_background, inactive_tab_foreground,
+# inactive_tab_background, tab_bar_background, mark1_foreground,
+# mark1_background, mark2_foreground, mark2_background, mark3_foreground,
+# mark3_background

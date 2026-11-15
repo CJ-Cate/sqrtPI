@@ -1,0 +1,46 @@
+# vim:ft=ghostty
+
+# The basic colors
+foreground = #cdd6f4
+background = #121219
+selection-foreground = #1e1e2e
+selection-background = #f5e0dc
+
+# Cursor colors
+cursor-color = #f5e0dc
+cursor-text = #1e1e2e
+
+# Split divider (kitty's window border color)
+split-divider-color = #b4befe
+
+# OS window titlebar follows the system theme
+window-theme = system
+
+# The 16 terminal colors
+
+# Normal colors
+palette = 0=#0f100f
+palette = 1=#625F31
+palette = 2=#384A47
+palette = 3=#615847
+palette = 4=#726B49
+palette = 5=#A66532
+palette = 6=#8F7350
+palette = 7=#d5c0a4
+
+# Bright colors
+palette = 8=#958672
+palette = 9=#625F31
+palette = 10=#384A47
+palette = 11=#615847
+palette = 12=#726B49
+palette = 13=#A66532
+palette = 14=#8F7350
+palette = 15=#d5c0a4
+
+# Kitty settings with no ghostty equivalent, dropped:
+# url_color, inactive_border_color, bell_border_color,
+# active_tab_foreground, active_tab_background, inactive_tab_foreground,
+# inactive_tab_background, tab_bar_background, mark1_foreground,
+# mark1_background, mark2_foreground, mark2_background, mark3_foreground,
+# mark3_background

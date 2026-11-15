@@ -1,0 +1,58 @@
+# vim:ft=ghostty
+
+## name:     Catppuccin Kitty Mocha
+## author:   Catppuccin Org
+## license:  MIT
+## upstream: https://github.com/catppuccin/kitty/blob/main/themes/mocha.conf
+## blurb:    Soothing pastel theme for the high-spirited!
+
+# The basic colors
+foreground = #d56c95
+background = #1a1520
+selection-foreground = #1e1e2e
+selection-background = #f5e0dc
+
+# Cursor colors
+cursor-color = #f5e0dc
+cursor-text = #1e1e2e
+
+# OS window titlebar follows the system theme
+window-theme = system
+
+# The 16 terminal colors
+
+# Black
+palette = 0=#2d2433
+palette = 8=#4a3d52
+
+# Red
+palette = 1=#E85B54
+palette = 9=#ff7a72
+
+# Green
+palette = 2=#7ce0d3
+palette = 10=#A5F5EA
+
+# Yellow
+palette = 3=#ffc4b5
+palette = 11=#ffd9cc
+
+# Blue
+palette = 4=#c57b9a
+palette = 12=#e89bb8
+
+# Magenta
+palette = 5=#D56C95
+palette = 13=#ed8cb1
+
+# Cyan
+palette = 6=#8ff0e6
+palette = 14=#bff8f0
+
+# White
+palette = 7=#FBB4A2
+palette = 15=#ffe5dc
+
+# Kitty settings with no ghostty equivalent, dropped:
+# url_color, mark1_foreground, mark1_background, mark2_foreground,
+# mark2_background, mark3_foreground, mark3_background

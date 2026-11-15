@@ -6,7 +6,7 @@ local mainMod  = "SUPER" -- this is the windows key, icon key, etc.
 local scrPath  = os.getenv("HOME") .. "/sqrtPI/Scripts"
 
 -- local TERMINAL = "alacritty"
-local TERMINAL = "kitty"
+local TERMINAL = "ghostty"
 -- local EDITOR   = "code" -- not implemented yet
 local EXPLORER = "dolphin"
 local BROWSER  = "librewolf"

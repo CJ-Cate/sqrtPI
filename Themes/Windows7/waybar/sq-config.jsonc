@@ -1,11 +1,11 @@
 {
     "reload_style_on_change": true,
-    "height": 42, // Default 42
+    "height": 48, // Min 48: the two-line clock requires it
     "spacing": 4, // Default 4
     "position": "bottom",
 
     "modules-left": [
-        "image#taskbarbutton",
+        "custom/taskbarbutton",
         "hyprland/workspaces"
     ],
     "modules-center": [
@@ -18,11 +18,13 @@
         "clock#time"
     ],
     
-    "image#taskbarbutton": {
-        "path":"/home/cj/sqrtPI/Themes/Windows7/media/taskbarbutton2.png",
-        "on-click":"~/sqrtPI/Scripts/rofilaunch.sh",
-        "interval":0,
-        "size":48
+    // Rendered via CSS background-image (see #custom-taskbarbutton in sq-style.css).
+    // The built-in `image` module spins waybar's main loop and the bar then never
+    // commits a first frame, leaving an invisible layer at alpha 0.
+    "custom/taskbarbutton": {
+        "format": " ",
+        "on-click": "~/sqrtPI/Scripts/rofilaunch.sh",
+        "tooltip": false
     },
 
     "battery": {
