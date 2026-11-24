@@ -32,8 +32,8 @@
         "format": "{id}",
         "on-click": "activate",
         "persistent-workspaces": {
-            "DP-1": [1, 2, 3],
-            "HDMI-A-1": [4, 5, 6]
+            "HDMI-A-1": [1, 2, 3],
+            "DP-1": [4, 5, 6]
         }
     },
     "pulseaudio":{
