@@ -111,7 +111,8 @@ export droplet1="root@138.197.234.97"
 alias mysql="/usr/bin/mariadb"
 # reserved ip connections
 alias plex="ssh -L 8080:127.0.0.1:8080 cj@10.0.0.73" # server box
-alias rasp="ssh cj@10.0.0.170" # pihole + tailscale
+alias flipper="ssh -L 8765:127.0.0.1:8765 cj@10.0.0.73" # flipper portal
+alias rasp="ssh cj@10.0.0.170" # pihole + vpn
 alias ppp='echo -n "echo $(cat ~/.ssh/id_ed25519.pub) >> ~/.ssh/authorized_keys" | wl-copy'
 alias trans=' trans -b en:es "$1"'
 alias snart=' trans -b es:en "$1"'
